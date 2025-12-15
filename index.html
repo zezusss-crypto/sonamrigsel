@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact & Case Studies - Sonam Rigsel</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header id="main-header">
+        <nav class="container">
+            <h1><a href="index.html">Sonam Rigsel</a></h1>
+            </nav>
+    </header>
+
+    <main class="case-study-main">
+        <section class="container section-padding">
+            <h2>Driving Strategic Impact at The Gravitas</h2>
+            <p class="tagline">Quantifiable results achieved through strategic leadership, operational pivots, and market analysis.</p>
+
+            <article class="case-study-block">
+                <span class="study-label">Case Study 01</span>
+                <h3>Accelerating User Acquisition by 40% Through Market Repositioning</h3>
+
+                <div class="par-grid">
+                    <div class="problem">
+                        <h4>The Challenge (Problem)</h4>
+                        <p>The Gravitas faced saturation in its initial niche, leading to flat month-over-month user growth (less than 2%). The core product needed a new, scalable market segment.</p>
+                    </div>
+                    <div class="action">
+                        <h4>My Solution (Action)</h4>
+                        <ol>
+                            <li>Led a 3-month deep-dive analysis into adjacent industries (e.g., FinTech).</li>
+                            <li>Championed a product pivot to service the underserved regulatory compliance sector.</li>
+                            <li>Re-allocated marketing spend towards highly targeted industry publications and events.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="result-visualization">
+                    <h4>The Quantifiable Result (Result)</h4>
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                    <p class="metric-summary">The repositioning resulted in a **40% increase in qualified leads** within six months, opening a total addressable market 3x larger than the original projection.</p>
+                </div>
+            </article>
+
+            <article class="case-study-block bg-light">
+                </article>
+
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
+    <script>
+        // JS to render the Chart.js visualization
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            const growthChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Q1 (Initial)', 'Q2', 'Q3', 'Q4 (Repositioned)'],
+                    datasets: [{
+                        label: 'Monthly Qualified Leads (in thousands)',
+                        data: [1.5, 1.6, 2.1, 2.7], // Example data showing 40% growth from Q1 to Q4
+                        backgroundColor: '#0056b3',
+                        borderColor: '#004494',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Qualified Lead Growth After Market Pivot'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
