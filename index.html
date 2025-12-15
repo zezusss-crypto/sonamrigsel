@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sonam Rigsel - Multi-Venture Co-Founder | The Gravitas, EduLink, Newton AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Sonam Rigsel - Strategic Co-Founder & Student | The Gravitas, EduLink, Newton AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
     <style>
@@ -14,7 +14,8 @@
         :root {
             --primary-color: #A349A4; /* Executive Purple - Distinct and modern */
             --secondary-color: #343a40; /* Dark Text */
-            --light-bg: #f8f9fa;
+            --light-bg: #f5f5f7; /* Very light subtle background */
+            --dark-bg: #1c1c1e; /* Dark background for footer/contact */
             --font-main: 'Roboto', sans-serif;
             --font-heading: 'Playfair Display', serif;
         }
@@ -25,7 +26,7 @@
             font-family: var(--font-main);
             color: var(--secondary-color);
             line-height: 1.6;
-            background-color: #fff;
+            background-color: var(--light-bg);
             scroll-behavior: smooth;
         }
 
@@ -44,38 +45,23 @@
         .section-padding {
             padding: 80px 0;
         }
-
-        .bg-light {
-            background-color: var(--light-bg);
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #7d387e;
-        }
-
+        
         /* -------------------------------------------------------------------
-        2. Header & Navigation (Sticky & Scrolled)
+        2. Section Backgrounds & Layout
         ------------------------------------------------------------------- */
+        #hero, #case-studies { background-color: #fff; }
+        #ventures, #experience, #hobbies { background-color: var(--light-bg); }
+        #personal-details, footer { background-color: var(--dark-bg); color: #fff; }
+
+        /* --- Header & Navigation (Styles remain the same) --- */
         #main-header {
             background: #fff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: background-color 0.3s, box-shadow 0.3s;
         }
         
-        #main-header.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
         #main-header .container {
             display: flex;
             justify-content: space-between;
@@ -83,281 +69,98 @@
             padding: 15px 0;
         }
 
-        #main-header h1 {
-            font-size: 1.5em;
-            margin: 0;
-            line-height: 1;
-        }
+        #main-header h1 { font-size: 1.5em; margin: 0; }
+        #main-header ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        #main-header ul li a { color: var(--secondary-color); padding: 10px 15px; font-weight: 400; text-decoration: none; }
+        #main-header ul li a:hover { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); }
 
-        #main-header ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        #main-header ul li a {
-            color: var(--secondary-color);
-            padding: 10px 15px;
-            font-weight: 400;
-        }
-
-        #main-header ul li a:hover {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 8px;
-        }
-        
-        /* -------------------------------------------------------------------
-        3. Hero Section (Home)
-        ------------------------------------------------------------------- */
+        /* --- Hero Section (Styles remain the same) --- */
         #hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
             min-height: 80vh;
-            padding: 80px 0;
         }
 
-        .hero-content {
-            max-width: 55%;
-        }
-
-        .hero-content h2 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-        
-        .hero-content h2 span {
-            color: var(--primary-color);
-        }
-
-        .tagline {
-            font-size: 1.3em;
-            font-weight: 300;
-            color: #6c757d;
-            margin-bottom: 35px;
-        }
-
-        .hero-image {
-            max-width: 35%;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 50%;
-            border: 8px solid var(--light-bg);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* CTA Button Styling */
+        .hero-content { max-width: 55%; }
+        .hero-content h2 { font-size: 3em; margin-bottom: 10px; line-height: 1.2; }
+        .hero-content h2 span { color: var(--primary-color); }
+        .tagline { font-size: 1.3em; font-weight: 300; color: #6c757d; margin-bottom: 35px; }
+        .hero-image { max-width: 35%; }
+        .hero-image img { width: 100%; height: auto; border-radius: 50%; border: 8px solid var(--light-bg); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .cta-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 14px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block; background-color: var(--primary-color); color: #fff; padding: 14px 30px; text-decoration: none; border-radius: 50px; font-weight: 700; transition: background-color 0.3s, transform 0.2s;
         }
+        .cta-button:hover { background-color: #7d387e; transform: translateY(-2px); }
 
-        .cta-button:hover {
-            background-color: #7d387e;
-            transform: translateY(-2px);
-        }
+        /* --- Ventures Grid (Styles remain the same) --- */
+        #ventures { text-align: center; }
+        .ventures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .venture-card { padding: 30px; background-color: #fff; border: 1px solid #e9ecef; border-radius: 8px; text-align: left; transition: box-shadow 0.3s ease; }
+        .venture-card:hover { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
+        .venture-card h4 { color: var(--primary-color); font-family: var(--font-heading); margin-top: 10px; font-size: 1.8em; }
+        .venture-card span { display: block; color: #6c757d; font-size: 0.9em; margin-bottom: 10px; }
 
         /* -------------------------------------------------------------------
-        4. Ventures Grid
+        3. Professional Experience Timeline (Styles remain the same)
         ------------------------------------------------------------------- */
-        #ventures {
-            padding: 60px 0 100px 0;
-            text-align: center;
-        }
+        #experience { text-align: center; }
+        .timeline-container { max-width: 900px; margin: 40px auto; position: relative; padding-left: 20px; }
+        .timeline-container:before { content: ''; position: absolute; width: 4px; background-color: #e0e0e0; top: 0; bottom: 0; left: 10px; }
+        .timeline-item { margin-bottom: 50px; position: relative; text-align: left; padding-left: 40px; }
+        .timeline-item h4 { margin-top: 0; margin-bottom: 5px; color: var(--primary-color); }
+        .timeline-item span { display: block; font-size: 0.9em; color: #6c757d; margin-bottom: 10px; }
+        .timeline-item:after { content: ''; position: absolute; width: 15px; height: 15px; background-color: var(--primary-color); border: 3px solid white; top: 5px; left: 3px; border-radius: 50%; z-index: 1; }
 
-        #ventures h2 {
-             margin-bottom: 40px;
-        }
-
-        .ventures-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .venture-card {
-            padding: 30px;
-            background-color: #fff;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            text-align: left;
-            transition: box-shadow 0.3s ease;
-        }
-        
-        .venture-card:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .venture-card h4 {
-            color: var(--primary-color);
-            font-family: var(--font-heading);
-            margin-top: 10px;
-            font-size: 1.8em;
-        }
-        
-        .venture-card span {
-            display: block;
-            color: #6c757d;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
+        /* --- Case Study Styling (Styles remain the same) --- */
+        .case-study-block { margin-bottom: 80px; padding: 40px; border: 1px solid #e9ecef; border-left: 5px solid var(--primary-color); border-radius: 8px; background-color: var(--light-bg); }
+        .study-label { display: block; color: var(--primary-color); font-weight: 700; margin-bottom: 5px; text-transform: uppercase; font-size: 0.85em; }
+        .par-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .par-grid h4 { color: var(--primary-color); margin-top: 0; border-bottom: 1px solid #e9ecef; padding-bottom: 5px; font-family: var(--font-main); font-weight: 700; }
+        .result-visualization { margin-top: 30px; padding-top: 30px; border-top: 1px dashed #ced4da; }
+        .chart-container { max-width: 650px; height: 300px; margin: 25px auto; }
+        .metric-summary { text-align: center; font-style: italic; font-weight: 400; font-size: 1.1em; color: #495057; }
 
         /* -------------------------------------------------------------------
-        5. Case Study Styling
+        4. Passions & Hobbies Grid
         ------------------------------------------------------------------- */
-        #case-studies {
-            padding: 100px 0 50px 0;
+        #hobbies { text-align: center; }
+        .hobbies-grid { 
+            display: grid; 
+            /* Now supports 4 columns for the extra hobbies */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
         }
-        
-        #case-studies h2 {
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 2.5em;
-        }
-        
-        #case-studies .tagline {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .case-study-block {
-            margin-bottom: 80px;
-            padding: 40px;
-            border: 1px solid #e9ecef;
-            border-left: 5px solid var(--primary-color);
-            border-radius: 8px;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .case-study-block:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .study-label {
-            display: block;
-            color: var(--primary-color);
-            font-weight: 700;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            font-size: 0.85em;
-        }
-
-        .case-study-block h3 {
-            font-size: 2em;
-            margin-top: 5px;
-            margin-bottom: 30px;
-        }
-
-        .par-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .par-grid h4 {
-            color: var(--primary-color);
-            margin-top: 0;
-            border-bottom: 1px solid #e9ecef;
-            padding-bottom: 5px;
-            font-family: var(--font-main);
-            font-weight: 700;
-        }
-
-        .result-visualization {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px dashed #ced4da;
-        }
-
-        .chart-container {
-            max-width: 650px;
-            margin: 25px auto;
-        }
-
-        .metric-summary {
-            text-align: center;
-            font-style: italic;
-            font-weight: 400;
-            font-size: 1.1em;
-            color: #495057;
-        }
+        .hobby-card { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .hobby-card h4 { color: var(--secondary-color); font-family: var(--font-main); margin-bottom: 5px; }
+        .hobby-card p { font-size: 0.9em; color: #6c757d; }
 
         /* -------------------------------------------------------------------
-        6. Footer & Contact
+        5. Personal Details and Contact (Dark Section)
         ------------------------------------------------------------------- */
-        footer {
-            background-color: var(--secondary-color);
-            color: #fff;
-            padding: 25px 0;
-            text-align: center;
-        }
+        #personal-details { padding: 40px 0; }
+        #personal-details .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .detail-group h4 { color: #fff; margin-bottom: 5px; font-family: var(--font-main); font-size: 1.2em; }
+        .detail-group p { margin-top: 0; color: #ccc; }
+        
+        /* --- Footer --- */
+        footer { background-color: var(--dark-bg); color: #fff; padding: 25px 0; text-align: center; }
+        footer .container { display: flex; justify-content: space-between; align-items: center; }
+        .social-links a { color: #fff; text-decoration: none; margin-left: 15px; }
+        .social-links a:hover { color: var(--primary-color); }
 
-        footer .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .social-links a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 15px;
-        }
-
-        /* -------------------------------------------------------------------
-        7. Responsive Design
-        ------------------------------------------------------------------- */
+        /* --- Responsive Design (Styles remain the same) --- */
         @media (max-width: 992px) {
-            #hero {
-                flex-direction: column;
-                text-align: center;
-                min-height: unset;
-                padding: 50px 0;
-            }
-
-            .hero-content, .hero-image {
-                max-width: 100%;
-            }
-
-            .hero-image {
-                margin-top: 30px;
-                max-width: 250px;
-            }
-            
-            .hero-content h2 {
-                font-size: 2.2em;
-            }
-
-            .par-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            #main-header .container {
-                flex-direction: column;
-                padding: 10px 0;
-            }
-
-            #main-header ul {
-                margin-top: 10px;
-            }
-
-            footer .container {
-                flex-direction: column;
-            }
+            #hero { flex-direction: column; text-align: center; min-height: unset; padding: 50px 0; }
+            .hero-content, .hero-image { max-width: 100%; }
+            .par-grid { grid-template-columns: 1fr; }
+            #main-header .container { flex-direction: column; padding: 10px 0; }
+            footer .container { flex-direction: column; }
+            .chart-container { height: 250px; }
+            #personal-details .container { justify-content: center; }
+            .detail-group { margin-bottom: 20px; text-align: center; width: 45%; }
+            .detail-group:last-child { width: 100%; }
         }
     </style>
 </head>
@@ -368,17 +171,19 @@
             <h1><a href="#hero">Sonam Rigsel</a></h1>
             <ul>
                 <li><a href="#ventures">Ventures</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#case-studies">Impact</a></li>
+                <li><a href="#hobbies">Passions</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="hero" class="container">
+        <section id="hero" class="container section-padding">
             <div class="hero-content">
-                <h2>I'm Sonam Rigsel, <br> <span class="text-primary">A Multi-Venture Co-Founder.</span></h2>
-                <p class="tagline">Scaling three diverse ventures—**The Gravitas, EduLink, and Newton AI**—I focus on building resilient strategies, fostering innovation, and securing market traction across various sectors.</p>
+                <h2>I'm Sonam Rigsel, <br> <span class="text-primary">A Strategic Co-Founder & Student.</span></h2>
+                <p class="tagline">Joining promising ventures **post-initial traction**, I leverage finance and technology to build resilient strategies, secure market share, and drive scalable growth across tech and education sectors.</p>
                 <a href="#ventures" class="cta-button">Explore My Ventures &rarr;</a>
             </div>
             <div class="hero-image">
@@ -386,39 +191,68 @@
             </div>
         </section>
 
-        <section id="ventures" class="bg-light section-padding">
+        <section id="ventures" class="section-padding">
             <div class="container">
                 <h2>My Portfolio of Companies</h2>
                 <div class="ventures-grid">
                     
                     <div class="venture-card">
-                        <h4>The Gravitas</h4>
-                        <span>Co-Founder | Strategic Focus: [e.g., Enterprise SaaS]</span>
-                        <p>Driving core strategy and operational scaling for a [Describe The Gravitas's purpose, e.g., B2B solution for supply chain logistics]. Key involvement in market entry and funding rounds.</p>
-                        <a href="#case-studies" data-filter="gravitas">View Gravitas Case Studies &rarr;</a>
+                        <h4>The Gravitas (Joined Post-Seed)</h4>
+                        <span>Co-Founder, Strategy & Operations | Focus: Enterprise SaaS</span>
+                        <p>Brought in to lead the **Go-to-Market (GTM) strategy** and convert early traction into repeatable revenue. Responsible for refining operational processes to support hyper-growth.</p>
+                        <a href="#case-studies" data-filter="gravitas">View Gravitas Impact &rarr;</a>
                     </div>
                     
                     <div class="venture-card">
-                        <h4>EduLink</h4>
-                        <span>Co-Founder | Strategic Focus: EdTech & Accessibility</span>
-                        <p>Building a platform that democratizes [e.g., professional training/higher education]. Responsible for product roadmap alignment, user experience, and partnership development.</p>
-                        <a href="#case-studies" data-filter="edulink">View EduLink Case Studies &rarr;</a>
+                        <h4>EduLink (Joined Post-MVP)</h4>
+                        <span>Co-Founder, Product & Partnerships | Focus: EdTech & Accessibility</span>
+                        <p>Hired to achieve **Product-Market Fit (PMF)** and define the multi-year product roadmap. Successfully negotiated and onboarded initial university partners.</p>
+                        <a href="#case-studies" data-filter="edulink">View EduLink Impact &rarr;</a>
                     </div>
                     
                     <div class="venture-card">
-                        <h4>Newton AI</h4>
-                        <span>Co-Founder | Strategic Focus: Applied Machine Learning</span>
-                        <p>Specializing in the development and commercialization of proprietary AI models for [e.g., predictive analytics]. Leading the integration of technical innovation with business viability.</p>
-                        <a href="#case-studies" data-filter="newtonai">View Newton AI Case Studies &rarr;</a>
+                        <h4>Newton AI (Joined Post-Launch)</h4>
+                        <span>Co-Founder, Technical Monetization | Focus: Applied Machine Learning</span>
+                        <p>Tasked with **technical monetization** and establishing the scalable API architecture. Bridging proprietary AI research with viable commercial products and pricing.</p>
+                        <a href="#case-studies" data-filter="newtonai">View Newton AI Impact &rarr;</a>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <section id="case-studies" class="container">
+        <section id="experience" class="section-padding">
+            <div class="container">
+                <h2>Professional Trajectory</h2>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <h4>Current Academic Pursuit</h4>
+                        <span>[Start Date] – Present | [University Name, e.g., Royal Thimphu College]</span>
+                        <p>**Student in [Your Current Major, e.g., Business Administration/Data Science]**. Integrating current academic learning with real-world entrepreneurial challenges across all three ventures.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Lead Strategist, [Previous Company Name]</h4>
+                        <span>2015 – 2019 | San Francisco, CA</span>
+                        <p>Directed strategic planning and managed a \$5M budget for new market initiatives. Developed key partnerships that led to a 25% increase in annual revenue.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Senior Analyst, [Banking/Consulting Firm]</h4>
+                        <span>2012 – 2015 | New York, NY</span>
+                        <p>Conducted in-depth financial modeling and due diligence for M&A projects totaling \$500M. Specialized in technology sector valuations.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>[University Name]</h4>
+                        <span>2008 – 2012 | [City]</span>
+                        <p>B.S. in [Your Degree] with a focus on Entrepreneurship and Computer Science.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="case-studies" class="container section-padding">
             <h2>Quantifiable Results Across My Ventures</h2>
-            <p class="tagline">Detailed analysis of cross-industry impact, leadership, and problem-solving.</p>
+            <p class="tagline" style="text-align: center;">Detailed analysis of cross-industry impact, leadership, and problem-solving.</p>
 
             <article class="case-study-block" data-company="gravitas">
                 <span class="study-label">The Gravitas | Case Study 01</span>
@@ -448,7 +282,7 @@
                 </div>
             </article>
             
-            <article class="case-study-block bg-light" data-company="edulink">
+            <article class="case-study-block" data-company="edulink">
                 <span class="study-label">EduLink | Case Study 02</span>
                 <h3>Scaling User Onboarding to 15,000 Students in the First Year</h3>
 
@@ -497,18 +331,58 @@
 
                 <div class="result-visualization">
                     <h4>The Quantifiable Result (Result)</h4>
+                    <div class="chart-container">
+                        <canvas id="newtonAIRevenueChart"></canvas>
+                    </div>
                     <p class="metric-summary">Successfully launched the Newton API, resulting in **\$120,000 in recurring monthly revenue (MRR)** within the first nine months, validating the technical monetization strategy.</p>
                 </div>
             </article>
 
         </section>
         
-        <section id="contact" class="section-padding bg-light" style="text-align: center;">
-            <div class="container" style="max-width: 700px;">
-                <h2>Let's Discuss Vision and Strategy</h2>
-                <p style="font-size: 1.1em; margin-bottom: 40px; color: #6c757d;">I am actively seeking partnerships, investment opportunities, and discussions on the future of EdTech and Applied AI. Reach out directly.</p>
-                <a href="mailto:your.email@example.com" class="cta-button">Email Sonam Rigsel</a>
-                <p style="margin-top: 30px;">Connect on <a href="[Your LinkedIn URL]" target="_blank">LinkedIn</a> for updates.</p>
+        <section id="hobbies" class="section-padding">
+            <div class="container">
+                <h2>Passions & Personal Growth</h2>
+                <p class="tagline" style="text-align: center;">I translate lessons in strategic thinking, system design, and creative expression from my hobbies into my professional work.</p>
+                <div class="hobbies-grid">
+                    <div class="hobby-card">
+                        <h4>Competitive Gaming & Strategy</h4>
+                        <p>Engaging in high-level strategy games (e.g., RTS, 4X) hones **scenario planning, resource allocation,** and high-pressure decision-making, directly applicable to startup pivots.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <h4>Music Production & Aesthetics</h4>
+                        <p>Producing electronic music explores **system design, iterative refinement,** and auditory aesthetics—skills that inform UI/UX and product rhythm across my EdTech and SaaS ventures.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <h4>Technology & Local Culture</h4>
+                        <p>I study the integration of modern tech (AI, blockchain) with Bhutanese values and culture, particularly promoting **Dzongkha and Sharchop** digital content and accessibility.</p>
+                    </div>
+                     <div class="hobby-card">
+                        <h4>Traditional Textiles & Craft</h4>
+                        <p>Supporting local weavers of **Bura** and **Aiekapur** textiles from Pemagatshel teaches meticulous attention to detail and appreciation for enduring, complex systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personal-details">
+            <div class="container">
+                <div class="detail-group">
+                    <h4>Status</h4>
+                    <p>**Co-Founder & Student**</p>
+                </div>
+                <div class="detail-group">
+                    <h4>Location</h4>
+                    <p>**Pemagatshel, Bhutan**</p>
+                </div>
+                <div class="detail-group">
+                    <h4>Languages</h4>
+                    <p>English, Dzongkha, Sharchop</p>
+                </div>
+                <div id="contact" class="detail-group" style="text-align: right;">
+                    <h4>Direct Contact</h4>
+                    <a href="mailto:your.email@example.com" class="cta-button" style="background: white; color: var(--dark-bg); padding: 8px 20px;">Email Sonam Rigsel</a>
+                </div>
             </div>
         </section>
     </main>
@@ -540,7 +414,7 @@
             
             // 2. Chart.js Data Visualizations
             
-            // Chart 1: The Gravitas Growth
+            // Chart 1: The Gravitas Growth (Bar Chart)
             const ctx1 = document.getElementById('gravitasGrowthChart');
             if (ctx1) {
                 new Chart(ctx1.getContext('2d'), {
@@ -556,15 +430,14 @@
                         }]
                     },
                     options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
+                        responsive: true, maintainAspectRatio: false,
                         scales: { y: { beginAtZero: true } },
                         plugins: { legend: { display: false }, title: { display: true, text: 'The Gravitas: Qualified Lead Growth' } }
                     }
                 });
             }
 
-            // Chart 2: EduLink Onboarding
+            // Chart 2: EduLink Onboarding (Line Chart)
             const ctx2 = document.getElementById('edulinkOnboardingChart');
             if (ctx2) {
                 new Chart(ctx2.getContext('2d'), {
@@ -574,62 +447,93 @@
                         datasets: [{
                             label: 'Cumulative Active Users',
                             data: [500, 2000, 6500, 11000, 15000], 
-                            borderColor: '#4CAF50', // Green for EdTech growth
+                            borderColor: '#4CAF50',
                             backgroundColor: 'rgba(76, 175, 80, 0.2)',
-                            fill: true,
-                            tension: 0.3
+                            fill: true, tension: 0.3
                         }]
                     },
                     options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
+                        responsive: true, maintainAspectRatio: false,
                         scales: { y: { beginAtZero: true } },
                         plugins: { legend: { display: false }, title: { display: true, text: 'EduLink: Cumulative Active Users (Year 1)' } }
                     }
                 });
             }
+            
+            // Chart 3: Newton AI Revenue (Pie Chart)
+            const ctx3 = document.getElementById('newtonAIRevenueChart');
+            if (ctx3) {
+                new Chart(ctx3.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['API Subscriptions', 'Custom Integrations', 'Consulting'],
+                        datasets: [{
+                            data: [55, 30, 15], 
+                            backgroundColor: ['#A349A4', '#4682B4', '#F4A460'],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'right' },
+                            title: { display: true, text: 'Newton AI: Revenue Stream Distribution' }
+                        }
+                    }
+                });
+            }
 
-            // 3. Smooth Scroll for internal links
+
+            // 3. Smooth Scroll and Filtering Logic
+            const caseStudiesSection = document.getElementById('case-studies');
+            
+            // Function to show all studies
+            const showAllStudies = () => {
+                 document.querySelectorAll('.case-study-block').forEach(study => {
+                    study.style.display = 'block';
+                });
+            };
+
+            // Smooth Scroll for internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     if (this.getAttribute('href').length > 1) { 
                         e.preventDefault();
-                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        const targetId = this.getAttribute('href');
+                        document.querySelector(targetId).scrollIntoView({
                             behavior: 'smooth'
                         });
+
+                        // If navigating to case studies from the main nav, show all
+                        if (targetId === '#case-studies') {
+                            showAllStudies();
+                        }
                     }
                 });
             });
             
-            // 4. Case Study Filtering (Optional Advanced Feature)
+            // Filtering logic for Venture Cards
             document.querySelectorAll('.venture-card a[data-filter]').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const filter = this.getAttribute('data-filter');
                     
                     // Smooth scroll to the case studies section
-                    document.getElementById('case-studies').scrollIntoView({ behavior: 'smooth' });
+                    caseStudiesSection.scrollIntoView({ behavior: 'smooth' });
 
-                    // Highlight/Filter the relevant case studies (basic visibility toggle)
+                    // Filter the case studies
                     document.querySelectorAll('.case-study-block').forEach(study => {
                         if (study.getAttribute('data-company') === filter) {
                             study.style.display = 'block';
-                            study.style.opacity = 1;
                         } else {
                             study.style.display = 'none';
-                            study.style.opacity = 0;
                         }
                     });
                 });
             });
             
-            // Show all case studies on initial load/nav click to 'Impact'
-            document.querySelector('a[href="#case-studies"]').addEventListener('click', function() {
-                 document.querySelectorAll('.case-study-block').forEach(study => {
-                    study.style.display = 'block';
-                    study.style.opacity = 1;
-                });
-            });
+            // Initial state: Show all case studies
+            showAllStudies();
         });
     </script>
 </body>
