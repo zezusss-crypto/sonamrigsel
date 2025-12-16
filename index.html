@@ -6,13 +6,15 @@
     <title>Your Name - Developer Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght=400&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables - Easy color management */
+        /* CSS Variables - CUSTOM COLOR PALETTE */
         :root {
-            --color-dark-bg: #1a1a2e; /* Deep Indigo/Navy */
-            --color-light-bg: #16213e;
-            --color-text-primary: #e4e4f0;
-            --color-text-secondary: #a8a8b3;
-            --color-accent: #e94560; /* Vibrant Red/Pink */
+            --color-dark-bg: #edf6f9;     /* Lightest color - Main Background */
+            --color-light-bg: #ffddd2;    /* Second lightest - Container Background */
+            --color-text-primary: #006d77; /* Dark Teal - Main Text/Headers */
+            --color-text-secondary: #83c5be; /* Seafoam Green - Subtitles/Subtext */
+            --color-accent: #e29578;      /* Coral/Salmon - Highlight/Links */
+            --color-secondary-accent: #006d77; /* Dark Teal - Headers/Primary Elements */
+            
             --font-main: 'Roboto', sans-serif;
             --font-mono: 'Roboto Mono', monospace;
         }
@@ -28,22 +30,22 @@
             scroll-behavior: smooth;
         }
 
-        /* --- 2. LAYOUT CONTAINER (Centered) --- */
+        /* --- 2. LAYOUT CONTAINER (Unchanged) --- */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* --- 3. STICKY NAVIGATION BAR (Unchanged) --- */
+        /* --- 3. STICKY NAVIGATION BAR --- */
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
             background-color: var(--color-dark-bg);
-            border-bottom: 1px solid var(--color-light-bg);
+            border-bottom: 2px solid var(--color-text-secondary);
             padding: 10px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         nav ul {
             list-style: none;
@@ -62,11 +64,11 @@
             border-radius: 4px;
         }
         nav ul li a:hover {
-            color: var(--color-accent);
-            background-color: var(--color-light-bg);
+            color: var(--color-dark-bg);
+            background-color: var(--color-secondary-accent);
         }
 
-        /* --- 4. HERO SECTION / INTRODUCTION (Unchanged) --- */
+        /* --- 4. HERO SECTION / INTRODUCTION --- */
         #intro {
             height: 60vh;
             display: flex;
@@ -80,10 +82,11 @@
             font-size: 3.5em;
             margin-bottom: 5px;
             font-weight: 700;
+            color: var(--color-secondary-accent); /* Dark Teal */
         }
         #intro .subtitle {
             font-size: 1.5em;
-            color: var(--color-accent);
+            color: var(--color-accent); /* Coral */
             font-family: var(--font-mono);
             margin-bottom: 20px;
         }
@@ -92,33 +95,30 @@
             color: var(--color-text-secondary);
         }
 
-        /* --- 5. MAIN CONTENT LAYOUT (CSS Grid - KEY CHANGE) --- */
+        /* --- 5. MAIN CONTENT LAYOUT (CSS Grid) --- */
         main {
-            /* Now using 3 equal columns for the first row of content */
             display: grid;
             grid-template-columns: repeat(3, 1fr); 
             gap: 40px;
             padding: 50px 0;
         }
 
-        /* Sections placed in a single column on small screens */
         @media (max-width: 768px) {
             main {
-                grid-template-columns: 1fr; /* Single column on mobile */
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
         }
         
-        /* The AI Bot and Experience section must span all 3 columns */
         #experience, #ai-bot {
             grid-column: 1 / -1; 
         }
 
         section {
             padding: 30px;
-            background-color: var(--color-light-bg);
+            background-color: var(--color-light-bg); /* Pale Peach/Sand */
             border-radius: 8px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Lighter shadow for light theme */
             transition: transform 0.3s ease;
         }
         section:hover {
@@ -127,32 +127,32 @@
 
         section h2 {
             font-size: 1.8em;
-            color: var(--color-accent);
-            border-bottom: 2px solid var(--color-accent);
+            color: var(--color-secondary-accent); /* Dark Teal */
+            border-bottom: 2px solid var(--color-accent); /* Coral line */
             padding-bottom: 10px;
             margin-top: 0;
             margin-bottom: 25px;
             font-weight: 700;
         }
 
-        /* --- 6. DETAILS AND EXPERIENCE STYLING (Unchanged) --- */
+        /* --- 6. DETAILS AND EXPERIENCE STYLING --- */
         .detail-item {
             margin-bottom: 15px;
             display: flex;
             gap: 10px;
         }
         .detail-item strong {
-            color: var(--color-accent);
+            color: var(--color-secondary-accent); /* Dark Teal */
             font-weight: 400;
             min-width: 100px;
         }
         a {
-            color: var(--color-accent);
+            color: var(--color-accent); /* Coral */
             text-decoration: none;
             transition: color 0.3s;
         }
         a:hover {
-            color: var(--color-text-primary);
+            color: var(--color-secondary-accent);
             text-decoration: underline;
         }
 
@@ -162,6 +162,7 @@
         .job-entry h3 {
             margin: 0;
             font-size: 1.2em;
+            color: var(--color-text-primary);
         }
         .job-entry em {
             display: block;
@@ -178,17 +179,22 @@
         .job-entry ul li {
             position: relative;
             padding-left: 20px;
-            color: var(--color-text-secondary);
+            color: var(--color-text-primary);
             font-size: 0.95em;
         }
         .job-entry ul li::before {
             content: '>';
-            color: var(--color-accent);
+            color: var(--color-accent); /* Coral bullet */
             position: absolute;
             left: 0;
         }
+        
+        /* Skills section text */
+        section p {
+            color: var(--color-text-primary);
+        }
 
-        /* --- 7. HOBBIES & AI BOT (Unchanged) --- */
+        /* --- 7. HOBBIES & AI BOT --- */
         .hidden {
             display: none;
         }
@@ -205,13 +211,14 @@
         #ai-bot {
             background-color: var(--color-light-bg);
             border: 2px solid var(--color-accent);
-            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+            box-shadow: 0 0 15px rgba(226, 149, 120, 0.4); /* Subtle coral glow */
         }
         #bot-response {
             background-color: var(--color-dark-bg);
             padding: 15px;
             border-radius: 4px;
             border-left: 3px solid var(--color-accent);
+            color: var(--color-text-primary);
         }
         #bot-input-container {
             display: flex;
@@ -226,8 +233,8 @@
             border-radius: 4px 0 0 4px;
         }
         #send-button {
-            background: var(--color-accent);
-            color: var(--color-dark-bg);
+            background: var(--color-accent); /* Coral */
+            color: var(--color-dark-bg); /* Pale Blue-White */
             font-weight: 700;
             border: none;
             padding: 10px 20px;
@@ -236,14 +243,15 @@
             transition: background 0.3s;
         }
         #send-button:hover {
-            background: #ff7287;
+            background: var(--color-secondary-accent); /* Dark Teal */
+            color: var(--color-dark-bg);
         }
 
-        /* --- 8. FOOTER (Unchanged) --- */
+        /* --- 8. FOOTER --- */
         footer {
             text-align: center;
             padding: 40px 0 20px 0;
-            border-top: 1px solid var(--color-light-bg);
+            border-top: 1px solid var(--color-text-secondary);
             color: var(--color-text-secondary);
             font-size: 0.8em;
         }
@@ -305,7 +313,7 @@
 
         <section>
             <h2>Core Skills</h2>
-            <p style="color: var(--color-text-secondary);">
+            <p style="color: var(--color-text-primary);">
                 HTML5, CSS3, JavaScript (ES6+), Responsive Design (Flex/Grid), Git/GitHub, Basic UI/UX Principles.
             </p>
         </section>
@@ -367,7 +375,7 @@
             // Email Hover/Interaction
             const emailSpan = document.getElementById('email-address');
             emailSpan.addEventListener('mouseover', function() {
-                emailSpan.style.color = 'var(--color-text-primary)';
+                emailSpan.style.color = 'var(--color-secondary-accent)';
                 emailSpan.style.textDecoration = 'underline';
             });
              emailSpan.addEventListener('mouseout', function() {
