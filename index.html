@@ -15,12 +15,36 @@
             line-height: 1.6;
         }
 
-        .container {
+        /* --- KEY LAYOUT CHANGES FOR ROW-WISE DESIGN --- */
+        #main-content {
+            display: flex; /* Activate Flexbox */
+            flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+            gap: 20px; /* Space between the columns/sections */
             width: 80%;
             margin: 0 auto;
             padding: 20px;
         }
+        
+        /* Make each main section take roughly one third of the container width */
+        .content-section {
+            flex: 1 1 calc(33.33% - 20px); /* Grow/Shrink, Base width approx 1/3 minus gap */
+            min-width: 300px; /* Ensures they don't get too narrow on medium screens */
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
+        /* Ensure the AI Bot section spans the full width at the bottom */
+        #ai-bot {
+            flex: 1 1 100%; /* Make it take up the full width row */
+            background: #e6f7ff;
+            border: 1px solid #b3e0ff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        /* --- General Component Styling (Mostly unchanged) --- */
         header {
             background: #007bff;
             color: white;
@@ -34,14 +58,6 @@
             font-size: 2.5em;
         }
 
-        section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
         section h2 {
             color: #007bff;
             border-bottom: 2px solid #007bff;
@@ -51,7 +67,7 @@
 
         .detail-item strong {
             display: inline-block;
-            width: 120px; /* Aligns the data nicely */
+            width: 100px; /* Adjusted slightly */
         }
 
         ul {
@@ -66,7 +82,7 @@
             border-left: 5px solid #007bff;
         }
 
-        /* Styling for the JavaScript interaction */
+        /* Hobbies/Toggle styles */
         #hobby-toggle {
             cursor: pointer;
             color: #007bff;
@@ -76,6 +92,48 @@
 
         .hidden {
             display: none;
+        }
+
+        /* AI Bot specific styles */
+        #bot-input-container {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        #user-question {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+
+        #send-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            transition: background 0.3s;
+        }
+
+        #bot-response {
+            margin-top: 10px;
+            padding: 10px;
+            border-left: 3px solid #007bff;
+            background: #ffffff;
+        }
+
+        /* --- Media Query for Mobile (Ensures Vertical Stack on small screens) --- */
+        @media (max-width: 768px) {
+            #main-content {
+                flex-direction: column; /* Stack vertically */
+                width: 95%;
+            }
+            .content-section {
+                flex: 1 1 100%; /* Each section takes full width */
+                min-width: unset;
+            }
         }
     </style>
 </head>
@@ -88,9 +146,9 @@
         </div>
     </header>
 
-    <div class="container">
+    <div id="main-content">
 
-        <section id="details">
+        <section id="details" class="content-section">
             <h2>👤 Personal Details</h2>
             <div class="detail-item">
                 <strong>Email:</strong> <span id="email-address">your.email@example.com</span>
@@ -106,15 +164,14 @@
             </div>
         </section>
 
-        <section id="experience">
+        <section id="experience" class="content-section">
             <h2>🛠️ Personal Experience</h2>
             <article class="job-entry">
                 <h3>Intern Developer - Tech Startup</h3>
                 <p><em>Jan 2024 - Present</em> | City, Country</p>
                 <ul>
-                    <li>Assisted in the development and maintenance of front-end features using **HTML, CSS, and JavaScript**.</li>
-                    <li>Collaborated with a senior team to debug and optimize existing codebase, resulting in a **15% performance improvement**.</li>
-                    <li>Created documentation for new features and processes, improving team onboarding efficiency.</li>
+                    <li>Assisted in front-end development using **HTML, CSS, and JavaScript**.</li>
+                    <li>Collaborated to debug and optimize codebase.</li>
                 </ul>
             </article>
 
@@ -122,13 +179,13 @@
                 <h3>Freelance Website Builder</h3>
                 <p><em>2023</em> | Remote</p>
                 <ul>
-                    <li>Designed and deployed 3 simple, responsive websites for small businesses using basic web technologies.</li>
-                    <li>Managed client communication to gather requirements and deliver projects on time.</li>
+                    <li>Designed and deployed 3 simple, responsive websites.</li>
+                    <li>Managed client communication for project delivery.</li>
                 </ul>
             </article>
         </section>
 
-        <section id="hobbies">
+        <section id="hobbies" class="content-section">
             <h2>🌟 Passions & Hobbies</h2>
             <p>
                 I believe in a healthy work-life balance and enjoy pursuing various activities outside of coding. 
@@ -137,50 +194,80 @@
             
             <div id="hobby-list" class="hidden">
                 <ul>
-                    <li>**Digital Art:** I enjoy creating pixel art and 3D models in my spare time. It helps me visualize complex designs.</li>
-                    <li>**Hiking & Outdoors:** Regular hiking keeps my mind clear and provides a fresh perspective for problem-solving.</li>
-                    <li>**Reading Tech Blogs:** I stay up-to-date with the latest developments in web frameworks and cloud computing.</li>
+                    <li>**Digital Art:** Helps me visualize complex designs.</li>
+                    <li>**Hiking & Outdoors:** Keeps my mind clear for problem-solving.</li>
+                    <li>**Reading Tech Blogs:** I stay up-to-date with new web frameworks.</li>
                 </ul>
             </div>
         </section>
 
-    </div>
+        <section id="ai-bot">
+            <h2>🧠 Ask My Portfolio (AI Simulator)</h2>
+            <p>Type a question to get a rapid, automated response about my skills or experience.</p>
 
-    <script>
+            <div id="bot-input-container">
+                <input type="text" id="user-question" placeholder="e.g., What is your main skill?" />
+                <button id="send-button">Ask</button>
+            </div>
+
+            <div id="bot-response">
+                <p><strong>Bot:</strong> Ready for your question!</p>
+            </div>
+        </section>
+
+    </div> <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get the elements we need
+            // Hobbies Toggle
             const toggleButton = document.getElementById('hobby-toggle');
             const hobbyList = document.getElementById('hobby-list');
-            const emailSpan = document.getElementById('email-address');
-
-            // 1. Interactive Hobbies Toggle
             toggleButton.addEventListener('click', function() {
-                // Toggle the 'hidden' class to show/hide the list
                 hobbyList.classList.toggle('hidden');
+                toggleButton.textContent = hobbyList.classList.contains('hidden') ? 'Click here to see more!' : 'Click to hide.';
+            });
 
-                // Change the text based on visibility
-                if (hobbyList.classList.contains('hidden')) {
-                    toggleButton.textContent = 'Click here to see more!';
-                } else {
-                    toggleButton.textContent = 'Click to hide.';
+            // Email Hover
+            const emailSpan = document.getElementById('email-address');
+            emailSpan.addEventListener('mouseover', function() {
+                emailSpan.style.backgroundColor = '#fffacd';
+            });
+             emailSpan.addEventListener('mouseout', function() {
+                emailSpan.style.backgroundColor = 'transparent';
+            });
+
+            // AI Bot Logic
+            const questionInput = document.getElementById('user-question');
+            const sendButton = document.getElementById('send-button');
+            const responseDiv = document.getElementById('bot-response');
+
+            const knowledgeBase = [
+                { query: "skill", response: "My main technical skill is Front-End Development, specifically using **HTML, CSS, and JavaScript**." },
+                { query: "experience", response: "I have experience as an Intern Developer and as a Freelance Website Builder. Check the 'Personal Experience' section for details!" },
+                { query: "contact", response: "You can reach me directly via email at your.email@example.com or through my LinkedIn." },
+                { query: "hobby", response: "I am passionate about Digital Art and Hiking. It helps keep my mind creative and fresh." },
+                { query: "name", response: "I am a portfolio, but the developer's name is Your Full Name." },
+            ];
+
+            function handleBotQuery() {
+                const userText = questionInput.value.toLowerCase().trim();
+                let botReply = "I'm sorry, I don't have information on that topic yet. Try asking about 'skill', 'experience', or 'hobby'.";
+                
+                for (const item of knowledgeBase) {
+                    if (userText.includes(item.query)) {
+                        botReply = item.response;
+                        break;
+                    }
+                }
+
+                responseDiv.innerHTML = `<p><strong>You Asked:</strong> ${questionInput.value}</p><p><strong>Bot:</strong> ${botReply}</p>`;
+                questionInput.value = '';
+            }
+
+            sendButton.addEventListener('click', handleBotQuery);
+            questionInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleBotQuery();
                 }
             });
-
-            // 2. Simple Alert Interaction (Example of JS functionality)
-            emailSpan.addEventListener('mouseover', function() {
-                // You can add more complex functionality here, like a tooltip
-                emailSpan.style.backgroundColor = '#fffacd'; // Light yellow highlight on hover
-            });
-
-             emailSpan.addEventListener('mouseout', function() {
-                emailSpan.style.backgroundColor = 'transparent'; // Remove highlight
-            });
-            
-            // Optional: You could add a 'mailto' link here if you prefer
-            // emailSpan.addEventListener('click', function() {
-            //     window.location.href = 'mailto:' + emailSpan.textContent;
-            // });
-
         });
     </script>
 
