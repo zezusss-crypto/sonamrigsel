@@ -3,208 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Your Name - Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght=400&display=swap" rel="stylesheet">
     <style>
-        /* Define a CSS Variable for the main accent color */
+        /* CSS Variables - Easy color management */
         :root {
-            --background-dark: #121212;
-            --background-light: #1e1e1e;
-            --text-primary: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --accent-color: #00bcd4; /* Vibrant Blue/Cyan */
+            --color-dark-bg: #1a1a2e; /* Deep Indigo/Navy */
+            --color-light-bg: #16213e;
+            --color-text-primary: #e4e4f0;
+            --color-text-secondary: #a8a8b3;
+            --color-accent: #e94560; /* Vibrant Red/Pink */
+            --font-main: 'Roboto', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
         }
 
-        /* --- GLOBAL STYLES --- */
+        /* --- 1. BASE STYLES & TYPOGRAPHY --- */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+            font-family: var(--font-main);
             margin: 0;
             padding: 0;
-            background-color: var(--background-dark);
-            color: var(--text-primary);
+            background-color: var(--color-dark-bg);
+            color: var(--color-text-primary);
             line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for navigation */
         }
 
-        /* --- LAYOUT CONTAINER (Centered and Narrow) --- */
+        /* --- 2. LAYOUT CONTAINER (Centered) --- */
         .container {
-            max-width: 750px; /* Constrain the width */
-            margin: 0 auto; /* Center the container */
-            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* --- HEADER / INTRODUCTION --- */
-        header {
-            text-align: left;
-            margin-bottom: 60px;
+        /* --- 3. STICKY NAVIGATION BAR --- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--color-dark-bg);
+            border-bottom: 1px solid var(--color-light-bg);
+            padding: 10px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-
-        .intro-details {
-            margin-top: 5px;
-            color: var(--text-secondary);
-        }
-
-        .intro-details h1 {
-            font-size: 3em;
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
             margin: 0;
-            font-weight: 900;
+        }
+        nav ul li a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 20px;
+            margin: 0 5px;
+            transition: color 0.3s, background-color 0.3s;
+            border-radius: 4px;
+        }
+        nav ul li a:hover {
+            color: var(--color-accent);
+            background-color: var(--color-light-bg);
         }
 
-        .intro-details p {
-            font-size: 1.2em;
-            margin-top: 5px;
+        /* --- 4. HERO SECTION / INTRODUCTION --- */
+        #intro {
+            height: 60vh; /* Viewport height for a focused introduction */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 50px;
+        }
+        #intro h1 {
+            font-size: 3.5em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        #intro .subtitle {
+            font-size: 1.5em;
+            color: var(--color-accent);
+            font-family: var(--font-mono);
+            margin-bottom: 20px;
+        }
+        #intro p {
+            max-width: 600px;
+            color: var(--color-text-secondary);
         }
 
-        /* --- SECTION STYLING --- */
+        /* --- 5. MAIN CONTENT LAYOUT (CSS Grid) --- */
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two main columns */
+            gap: 40px;
+            padding: 50px 0;
+        }
+
+        /* Sections placed in a single column on small screens */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
         section {
-            padding: 20px 0;
-            margin-bottom: 40px;
-            border-top: 1px solid var(--background-light); /* Subtle divider */
+            padding: 30px;
+            background-color: var(--color-light-bg);
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease; /* Subtle hover effect */
+        }
+        section:hover {
+            transform: translateY(-5px);
         }
 
         section h2 {
-            font-size: 1.5em;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 1.8em;
+            color: var(--color-accent);
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 700;
         }
 
-        /* --- PERSONAL DETAILS --- */
+        /* --- 6. DETAILS AND EXPERIENCE STYLING --- */
         .detail-item {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
         }
         .detail-item strong {
-            display: inline-block;
-            width: 80px;
-            color: var(--text-secondary);
+            color: var(--color-accent);
+            font-weight: 400;
+            min-width: 100px;
         }
         a {
-            color: var(--accent-color);
+            color: var(--color-accent);
             text-decoration: none;
+            transition: color 0.3s;
         }
         a:hover {
+            color: var(--color-text-primary);
             text-decoration: underline;
         }
 
-        /* --- EXPERIENCE --- */
         .job-entry {
-            background: var(--background-light);
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 25px;
-            border-left: 3px solid var(--accent-color);
+            margin-bottom: 30px;
         }
-
         .job-entry h3 {
-            margin: 0 0 5px 0;
+            margin: 0;
             font-size: 1.2em;
-            color: var(--text-primary);
         }
-
         .job-entry em {
             display: block;
             font-style: normal;
             font-size: 0.9em;
-            color: var(--text-secondary);
+            color: var(--color-text-secondary);
             margin-bottom: 10px;
         }
-
         .job-entry ul {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
             margin: 0;
         }
         .job-entry ul li {
-            padding-left: 15px;
-            text-indent: -15px;
-            color: var(--text-secondary);
+            position: relative;
+            padding-left: 20px;
+            color: var(--color-text-secondary);
+            font-size: 0.95em;
         }
         .job-entry ul li::before {
-            content: '• ';
-            color: var(--accent-color);
+            content: '>'; /* Professional bullet point */
+            color: var(--color-accent);
+            position: absolute;
+            left: 0;
         }
 
-
-        /* --- PASSIONS & HOBBIES --- */
-        #hobby-toggle {
-            cursor: pointer;
-            color: var(--accent-color);
-            text-decoration: underline;
-            font-weight: bold;
-        }
-
+        /* --- 7. HOBBIES & AI BOT --- */
         .hidden {
             display: none;
         }
-        
-        #hobby-list ul li {
-            background: none;
-            border-left: none;
-            color: var(--text-primary);
-            padding: 5px 0;
+        #hobby-toggle {
+            cursor: pointer;
+            color: var(--color-accent);
+            font-weight: 700;
+            transition: opacity 0.3s;
         }
-        #hobby-list ul li::before {
-            content: '⭐ ';
+        #hobby-toggle:hover {
+            opacity: 0.8;
         }
 
-
-        /* --- AI BOT SECTION --- */
         #ai-bot {
-            background: var(--background-light);
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            grid-column: 1 / -1; /* Make the bot section span both columns */
+            background-color: var(--color-light-bg);
+            border: 2px solid var(--color-accent);
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5); /* Glowing effect */
         }
-
+        #bot-response {
+            background-color: var(--color-dark-bg);
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid var(--color-accent);
+        }
+        /* Input/Button Styling */
         #bot-input-container {
             display: flex;
             margin-top: 15px;
         }
-
         #user-question {
             flex-grow: 1;
             padding: 10px;
-            border: 1px solid var(--text-secondary);
+            border: 1px solid var(--color-text-secondary);
+            background: var(--color-dark-bg);
+            color: var(--color-text-primary);
             border-radius: 4px 0 0 4px;
-            background: var(--background-dark);
-            color: var(--text-primary);
         }
-
         #send-button {
-            background: var(--accent-color);
-            color: var(--background-dark);
-            font-weight: bold;
+            background: var(--color-accent);
+            color: var(--color-dark-bg);
+            font-weight: 700;
             border: none;
-            padding: 10px 15px;
+            padding: 10px 20px;
             cursor: pointer;
             border-radius: 0 4px 4px 0;
             transition: background 0.3s;
         }
-
         #send-button:hover {
-            background: #00a8b9; /* Slightly darker accent */
+            background: #ff7287;
         }
 
-        #bot-response {
-            margin-top: 15px;
-            padding: 15px;
-            border-left: 3px solid var(--accent-color);
-            background: var(--background-dark);
-            color: var(--text-primary);
-            border-radius: 0 4px 4px 0;
+        /* --- 8. FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            border-top: 1px solid var(--color-light-bg);
+            color: var(--color-text-secondary);
+            font-size: 0.8em;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <header>
-            <div class="intro-details">
-                <h1>Your Full Name</h1>
-                <p>Front-End Enthusiast | Building things with **HTML, CSS, & JS**</p>
-            </div>
-        </header>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#intro">Home</a></li>
+                <li><a href="#details">Details</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#hobbies">Passions</a></li>
+                <li><a href="#ai-bot">AI Chat</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <header id="intro" class="container">
+        <h1>[Your Full Name]</h1>
+        <p class="subtitle">Code. Innovate. Build.</p>
+        <p>A dedicated Front-End Developer with a passion for building fast, beautiful, and accessible web experiences. I specialize in the core web technologies and modern CSS architecture.</p>
+    </header>
+
+    <main class="container">
+        
         <section id="details">
             <h2>Personal Details</h2>
             <div class="detail-item">
@@ -217,18 +279,35 @@
                 <strong>Location:</strong> City, Country
             </div>
             <div class="detail-item">
-                <strong>LinkedIn:</strong> <a href="[Your LinkedIn URL]" target="_blank">linkedin.com/in/yourprofile</a>
+                <strong>LinkedIn:</strong> <a href="[Your LinkedIn URL]" target="_blank">/in/yourprofile</a>
             </div>
         </section>
 
-        <section id="experience">
-            <h2>Experience</h2>
+        <section id="hobbies">
+            <h2>Passions & Hobbies</h2>
+            <p>
+                A clear mind fuels better code. I enjoy maintaining a healthy work-life balance through:
+                <span id="hobby-toggle">[Show Details]</span>
+            </p>
+            
+            <div id="hobby-list" class="hidden">
+                <ul>
+                    <li>**Digital Art:** Practicing design skills by creating illustrations and mockups.</li>
+                    <li>**Open Source:** Contributing to small utility projects on GitHub.</li>
+                    <li>**Fitness:** Regular workouts to boost focus and energy levels.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="experience" style="grid-column: 1 / -1;">
+            <h2>Personal Experience</h2>
             <article class="job-entry">
                 <h3>Intern Developer - Tech Startup</h3>
                 <p><em>Jan 2024 - Present | City, Country</em></p>
                 <ul>
-                    <li>Assisted in the development and maintenance of front-end features using **HTML, CSS, and JavaScript**.</li>
-                    <li>Collaborated with the team to debug and optimize codebase.</li>
+                    <li>**Core Development:** Developed modular and responsive UI components using **HTML5, CSS3, and native JavaScript**.</li>
+                    <li>**Optimization:** Participated in code reviews and utilized browser DevTools to identify and resolve performance bottlenecks.</li>
+                    <li>**Collaboration:** Integrated RESTful APIs with front-end logic, working closely with the back-end team.</li>
                 </ul>
             </article>
 
@@ -236,77 +315,71 @@
                 <h3>Freelance Website Builder</h3>
                 <p><em>2023 | Remote</em></p>
                 <ul>
-                    <li>Designed and deployed 3 simple, responsive websites for small businesses.</li>
-                    <li>Managed client communication to gather requirements and deliver projects on time.</li>
+                    <li>**Project Management:** Managed end-to-end delivery of three client websites, ensuring requirements were met on time and budget.</li>
+                    <li>**Design & UX:** Focused on user-centered design, resulting in clean interfaces and positive client feedback.</li>
                 </ul>
             </article>
         </section>
-
-        <section id="hobbies">
-            <h2>Passions & Hobbies</h2>
-            <p>
-                I enjoy maintaining a healthy work-life balance through various activities. 
-                <span id="hobby-toggle">Click here to see more.</span>
-            </p>
-            
-            <div id="hobby-list" class="hidden">
-                <ul>
-                    <li>**Digital Art:** I enjoy creating pixel art and 3D models in my spare time.</li>
-                    <li>**Hiking & Outdoors:** Regular hiking provides a fresh perspective for problem-solving.</li>
-                    <li>**Reading Tech Blogs:** Staying up-to-date with the latest web frameworks.</li>
-                </ul>
-            </div>
-        </section>
-
+        
         <section id="ai-bot">
-            <h2>Chat with AI [Your Name]</h2>
-            <p>Hello! I am [Your Name]'s AI assistant. Ask me anything about their skills or experience!</p>
+            <h2><span style="font-family: var(--font-mono);">λ</span> AI [Your Name] Assistant</h2>
+            <p>Hello! I am your AI assistant. Ask me anything about my core **skills**, **experience**, or **contact** details below.</p>
 
             <div id="bot-input-container">
-                <input type="text" id="user-question" placeholder="e.g., What is your main skill?" />
-                <button id="send-button">Send</button>
+                <input type="text" id="user-question" placeholder="e.g., What technologies do you focus on?" />
+                <button id="send-button">Ask</button>
             </div>
 
             <div id="bot-response">
-                <p><strong>Bot:</strong> Ready for your question!</p>
+                <p><strong>Bot:</strong> Awaiting query...</p>
             </div>
         </section>
 
-    </div> <script>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 [Your Full Name]. Built with HTML, CSS, & JavaScript.</p>
+        </div>
+    </footer>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Hobbies Toggle
+            // Hobbies Toggle Logic
             const toggleButton = document.getElementById('hobby-toggle');
             const hobbyList = document.getElementById('hobby-list');
             toggleButton.addEventListener('click', function() {
                 hobbyList.classList.toggle('hidden');
-                toggleButton.textContent = hobbyList.classList.contains('hidden') ? 'Click here to see more.' : 'Click to hide.';
+                toggleButton.textContent = hobbyList.classList.contains('hidden') ? '[Show Details]' : '[Hide Details]';
             });
 
-            // Email Hover/Interaction
+            // Email Hover/Interaction (for a subtle effect)
             const emailSpan = document.getElementById('email-address');
             emailSpan.addEventListener('mouseover', function() {
+                emailSpan.style.color = 'var(--color-text-primary)';
                 emailSpan.style.textDecoration = 'underline';
             });
              emailSpan.addEventListener('mouseout', function() {
+                emailSpan.style.color = 'inherit';
                 emailSpan.style.textDecoration = 'none';
             });
 
-            // AI Bot Logic (unchanged from the functional version)
+            // AI Bot Logic (Enhanced Knowledge Base)
             const questionInput = document.getElementById('user-question');
             const sendButton = document.getElementById('send-button');
             const responseDiv = document.getElementById('bot-response');
 
             const knowledgeBase = [
-                { query: "skill", response: "My main technical skill is Front-End Development, specifically using **HTML, CSS, and JavaScript**." },
-                { query: "experience", response: "I have experience as an Intern Developer and as a Freelance Website Builder. Check the 'Experience' section for details!" },
-                { query: "contact", response: "You can reach me directly via email at your.email@example.com or through my LinkedIn." },
-                { query: "hobby", response: "I am passionate about Digital Art and Hiking. It helps keep my mind creative and fresh." },
-                { query: "name", response: "I am a portfolio, but the developer's name is Your Full Name." },
+                { query: "skill", response: "My main technical focus is Front-End Development, specializing in **HTML5, CSS3, and Native JavaScript**. I'm currently learning React." },
+                { query: "technologies", response: "My core tech stack includes HTML, CSS (with Flexbox/Grid), and JavaScript. I also use Git for version control and VS Code for development." },
+                { query: "experience", response: "I have experience as an Intern Developer and as a Freelance Website Builder. Check the 'Personal Experience' section for detailed project involvement." },
+                { query: "contact", response: "You can reach me directly via email at your.email@example.com or find my professional profile on LinkedIn." },
+                { query: "name", response: "I am the assistant for the developer: [Your Full Name]." },
             ];
 
             function handleBotQuery() {
                 const userText = questionInput.value.toLowerCase().trim();
-                let botReply = "I'm sorry, I don't have information on that topic yet. Try asking about 'skill', 'experience', or 'hobby'.";
+                let botReply = "I apologize. I can only provide information related to the developer's **skills**, **experience**, or **contact** details. Please try another query.";
                 
                 for (const item of knowledgeBase) {
                     if (userText.includes(item.query)) {
@@ -315,7 +388,7 @@
                     }
                 }
 
-                responseDiv.innerHTML = `<p><strong>You Asked:</strong> ${questionInput.value}</p><p><strong>Bot:</strong> ${botReply}</p>`;
+                responseDiv.innerHTML = `<p><strong>You:</strong> ${questionInput.value}</p><p><strong>Bot:</strong> ${botReply}</p>`;
                 questionInput.value = '';
             }
 
