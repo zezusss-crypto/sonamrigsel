@@ -25,7 +25,7 @@
             background-color: var(--color-dark-bg);
             color: var(--color-text-primary);
             line-height: 1.6;
-            scroll-behavior: smooth; /* Smooth scrolling for navigation */
+            scroll-behavior: smooth;
         }
 
         /* --- 2. LAYOUT CONTAINER (Centered) --- */
@@ -35,7 +35,7 @@
             padding: 20px;
         }
 
-        /* --- 3. STICKY NAVIGATION BAR --- */
+        /* --- 3. STICKY NAVIGATION BAR (Unchanged) --- */
         nav {
             position: sticky;
             top: 0;
@@ -66,9 +66,9 @@
             background-color: var(--color-light-bg);
         }
 
-        /* --- 4. HERO SECTION / INTRODUCTION --- */
+        /* --- 4. HERO SECTION / INTRODUCTION (Unchanged) --- */
         #intro {
-            height: 60vh; /* Viewport height for a focused introduction */
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -92,10 +92,11 @@
             color: var(--color-text-secondary);
         }
 
-        /* --- 5. MAIN CONTENT LAYOUT (CSS Grid) --- */
+        /* --- 5. MAIN CONTENT LAYOUT (CSS Grid - KEY CHANGE) --- */
         main {
+            /* Now using 3 equal columns for the first row of content */
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two main columns */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 40px;
             padding: 50px 0;
         }
@@ -103,17 +104,22 @@
         /* Sections placed in a single column on small screens */
         @media (max-width: 768px) {
             main {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Single column on mobile */
                 gap: 20px;
             }
         }
         
+        /* The AI Bot and Experience section must span all 3 columns */
+        #experience, #ai-bot {
+            grid-column: 1 / -1; 
+        }
+
         section {
             padding: 30px;
             background-color: var(--color-light-bg);
             border-radius: 8px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease; /* Subtle hover effect */
+            transition: transform 0.3s ease;
         }
         section:hover {
             transform: translateY(-5px);
@@ -129,7 +135,7 @@
             font-weight: 700;
         }
 
-        /* --- 6. DETAILS AND EXPERIENCE STYLING --- */
+        /* --- 6. DETAILS AND EXPERIENCE STYLING (Unchanged) --- */
         .detail-item {
             margin-bottom: 15px;
             display: flex;
@@ -176,13 +182,13 @@
             font-size: 0.95em;
         }
         .job-entry ul li::before {
-            content: '>'; /* Professional bullet point */
+            content: '>';
             color: var(--color-accent);
             position: absolute;
             left: 0;
         }
 
-        /* --- 7. HOBBIES & AI BOT --- */
+        /* --- 7. HOBBIES & AI BOT (Unchanged) --- */
         .hidden {
             display: none;
         }
@@ -197,10 +203,9 @@
         }
 
         #ai-bot {
-            grid-column: 1 / -1; /* Make the bot section span both columns */
             background-color: var(--color-light-bg);
             border: 2px solid var(--color-accent);
-            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5); /* Glowing effect */
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
         }
         #bot-response {
             background-color: var(--color-dark-bg);
@@ -208,7 +213,6 @@
             border-radius: 4px;
             border-left: 3px solid var(--color-accent);
         }
-        /* Input/Button Styling */
         #bot-input-container {
             display: flex;
             margin-top: 15px;
@@ -235,7 +239,7 @@
             background: #ff7287;
         }
 
-        /* --- 8. FOOTER --- */
+        /* --- 8. FOOTER (Unchanged) --- */
         footer {
             text-align: center;
             padding: 40px 0 20px 0;
@@ -298,8 +302,15 @@
                 </ul>
             </div>
         </section>
+
+        <section>
+            <h2>Core Skills</h2>
+            <p style="color: var(--color-text-secondary);">
+                HTML5, CSS3, JavaScript (ES6+), Responsive Design (Flex/Grid), Git/GitHub, Basic UI/UX Principles.
+            </p>
+        </section>
         
-        <section id="experience" style="grid-column: 1 / -1;">
+        <section id="experience">
             <h2>Personal Experience</h2>
             <article class="job-entry">
                 <h3>Intern Developer - Tech Startup</h3>
@@ -353,7 +364,7 @@
                 toggleButton.textContent = hobbyList.classList.contains('hidden') ? '[Show Details]' : '[Hide Details]';
             });
 
-            // Email Hover/Interaction (for a subtle effect)
+            // Email Hover/Interaction
             const emailSpan = document.getElementById('email-address');
             emailSpan.addEventListener('mouseover', function() {
                 emailSpan.style.color = 'var(--color-text-primary)';
@@ -364,7 +375,7 @@
                 emailSpan.style.textDecoration = 'none';
             });
 
-            // AI Bot Logic (Enhanced Knowledge Base)
+            // AI Bot Logic
             const questionInput = document.getElementById('user-question');
             const sendButton = document.getElementById('send-button');
             const responseDiv = document.getElementById('bot-response');
